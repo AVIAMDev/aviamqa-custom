@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  @author Fausto Jesús De La Cruz Caminero <fdelacruz@aviamltd.com>
+-->
+<odoo>
+    <!-- View Form Wizard -->
+    <record id="wizard_inventary_view_form" model="ir.ui.view">
+        <field name="name">wizard_inventary.view.form</field>
+        <field name="model">inventary.report.wizard</field>
+        <field name="arch" type="xml">
+            <form string="Report Sial PDF">
+                <group>
+                    <field name="category_ids"/>
+                </group>
+                <footer>
+                    <button name="action_report_wizard" string="Generate" type="object"/>
+                    <button name="action_report_wizard_all" string="Generate All" type="object"/>
+                    <button string="Cancel" class="btn-secondary" special="cancel"/>
+                </footer>
+            </form>
+        </field>
+    </record>
+    <!-- Action Wizard -->
+    <record id="wizard_inventary_report_action" model="ir.actions.act_window">
+        <field name="name">Wizard Inventary Report</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">inventary.report.wizard</field>
+        <field name="view_mode">form</field>
+        <field name="view_id" ref="inventory_report_fixes_aviam.wizard_inventary_view_form"/>
+        <field name="target">new</field>
+    </record>
+</odoo>

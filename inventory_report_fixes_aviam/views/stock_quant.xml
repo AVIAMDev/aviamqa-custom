@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  @author Fausto Jesús De La Cruz Caminero <fdelacruz@aviamltd.com>
+-->
+<odoo>
+    <!-- JS -->
+    <template id="assets_common_report_js" name="i_report" inherit_id="web.assets_backend">
+        <xpath expr="." position="inside">
+            <script type="text/javascript" src="/inventory_report_fixes_aviam/static/src/js/action_button.js"/>
+        </xpath>
+    </template>
+</odoo>

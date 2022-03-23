@@ -1,0 +1,193 @@
+# Translation of Odoo Server.
+# This file contains the translation of the following modules:
+# 	* inventory_report_fixes_aviam
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Odoo Server 14.0+e-20210321\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2022-03-17 04:18+0000\n"
+"PO-Revision-Date: 2022-03-16 23:19-0500\n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"Language: es_DO\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: \n"
+"X-Generator: Poedit 3.0.1\n"
+
+#. module: inventory_report_fixes_aviam
+#: model_terms:ir.ui.view,arch_db:inventory_report_fixes_aviam.template_report_inventory
+msgid "<span>Category Master:</span>"
+msgstr "<span>Categoría Master:</span>"
+
+#. module: inventory_report_fixes_aviam
+#: model_terms:ir.ui.view,arch_db:inventory_report_fixes_aviam.template_report_inventory
+msgid "<span>Category:</span>"
+msgstr "<span>Categoría:</span>"
+
+#. module: inventory_report_fixes_aviam
+#: model_terms:ir.ui.view,arch_db:inventory_report_fixes_aviam.template_report_inventory
+msgid "<span>Category</span>"
+msgstr "<span>Categoría</span>"
+
+#. module: inventory_report_fixes_aviam
+#: model_terms:ir.ui.view,arch_db:inventory_report_fixes_aviam.template_report_inventory
+msgid "Article"
+msgstr "Artículo"
+
+#. module: inventory_report_fixes_aviam
+#: model_terms:ir.ui.view,arch_db:inventory_report_fixes_aviam.wizard_inventary_view_form
+msgid "Cancel"
+msgstr "Cancelar"
+
+#. module: inventory_report_fixes_aviam
+#: model:ir.model.fields,help:inventory_report_fixes_aviam.field_inventary_report_wizard__category_ids
+msgid "Choose category product"
+msgstr "Elige una categoría de producto"
+
+#. module: inventory_report_fixes_aviam
+#: model_terms:ir.ui.view,arch_db:inventory_report_fixes_aviam.template_report_inventory
+msgid "Cost"
+msgstr "Costo"
+
+#. module: inventory_report_fixes_aviam
+#: model:ir.model.fields,field_description:inventory_report_fixes_aviam.field_inventary_report_wizard__create_uid
+msgid "Created by"
+msgstr "Creado por"
+
+#. module: inventory_report_fixes_aviam
+#: model:ir.model.fields,field_description:inventory_report_fixes_aviam.field_inventary_report_wizard__create_date
+msgid "Created on"
+msgstr "Creado en"
+
+#. module: inventory_report_fixes_aviam
+#: model_terms:ir.ui.view,arch_db:inventory_report_fixes_aviam.template_report_inventory
+msgid "Date"
+msgstr "Fecha"
+
+#. module: inventory_report_fixes_aviam
+#: model_terms:ir.ui.view,arch_db:inventory_report_fixes_aviam.template_report_inventory
+msgid "Description"
+msgstr "Descripión"
+
+#. module: inventory_report_fixes_aviam
+#: model:ir.model.fields,field_description:inventory_report_fixes_aviam.field_inventary_report_wizard__display_name
+#: model:ir.model.fields,field_description:inventory_report_fixes_aviam.field_stock_quant__display_name
+msgid "Display Name"
+msgstr "Nombre mostrado"
+
+#. module: inventory_report_fixes_aviam
+#: model_terms:ir.ui.view,arch_db:inventory_report_fixes_aviam.template_report_inventory
+msgid "Existential Costs"
+msgstr "Costos Existenciales"
+
+#. module: inventory_report_fixes_aviam
+#: model_terms:ir.ui.view,arch_db:inventory_report_fixes_aviam.wizard_inventary_view_form
+msgid "Generate"
+msgstr "Generar"
+
+#. module: inventory_report_fixes_aviam
+#: model_terms:ir.ui.view,arch_db:inventory_report_fixes_aviam.wizard_inventary_view_form
+msgid "Generate All"
+msgstr "Generar Todos"
+
+#. module: inventory_report_fixes_aviam
+#: model:ir.model.fields,field_description:inventory_report_fixes_aviam.field_inventary_report_wizard__id
+#: model:ir.model.fields,field_description:inventory_report_fixes_aviam.field_stock_quant__id
+msgid "ID"
+msgstr ""
+
+#. module: inventory_report_fixes_aviam
+#: model_terms:ir.ui.view,arch_db:inventory_report_fixes_aviam.template_report_inventory
+msgid "Internal Reference"
+msgstr "Referencia Interna"
+
+#. module: inventory_report_fixes_aviam
+#: model:ir.actions.report,name:inventory_report_fixes_aviam.xml_action_report_inventory
+msgid "Inventory Report PDF"
+msgstr "Reporte Inventario PDF"
+
+#. module: inventory_report_fixes_aviam
+#: model:ir.model.fields,field_description:inventory_report_fixes_aviam.field_inventary_report_wizard____last_update
+#: model:ir.model.fields,field_description:inventory_report_fixes_aviam.field_stock_quant____last_update
+msgid "Last Modified on"
+msgstr "Última modificación en"
+
+#. module: inventory_report_fixes_aviam
+#: model:ir.model.fields,field_description:inventory_report_fixes_aviam.field_inventary_report_wizard__write_uid
+msgid "Last Updated by"
+msgstr ""
+
+#. module: inventory_report_fixes_aviam
+#: model:ir.model.fields,field_description:inventory_report_fixes_aviam.field_inventary_report_wizard__write_date
+msgid "Last Updated on"
+msgstr ""
+
+#. module: inventory_report_fixes_aviam
+#: model_terms:ir.ui.view,arch_db:inventory_report_fixes_aviam.template_report_inventory
+msgid "Logo"
+msgstr ""
+
+#. module: inventory_report_fixes_aviam
+#: model_terms:ir.ui.view,arch_db:inventory_report_fixes_aviam.template_report_inventory
+msgid "Pag. <span class=\"page\"/>"
+msgstr "Pág. <span class=\"page\"/>"
+
+#. module: inventory_report_fixes_aviam
+#: model:ir.model.fields,field_description:inventory_report_fixes_aviam.field_inventary_report_wizard__category_ids
+msgid "Product Category"
+msgstr "Categoría de Producto"
+
+#. module: inventory_report_fixes_aviam
+#: model_terms:ir.ui.view,arch_db:inventory_report_fixes_aviam.template_report_inventory
+msgid "Quantity"
+msgstr "Cantidad"
+
+#. module: inventory_report_fixes_aviam
+#: model:ir.model,name:inventory_report_fixes_aviam.model_stock_quant
+msgid "Quants"
+msgstr ""
+
+#. module: inventory_report_fixes_aviam
+#. openerp-web
+#: code:addons/inventory_report_fixes_aviam/static/src/xml/menu_header.xml:0
+#: model_terms:ir.ui.view,arch_db:inventory_report_fixes_aviam.wizard_inventary_view_form
+#, python-format
+msgid "Report Sial PDF"
+msgstr "Reporte Sial PDF"
+
+#. module: inventory_report_fixes_aviam
+#: code:addons/inventory_report_fixes_aviam/wizard/wizard_inventary_report.py:0
+#, python-format
+msgid "Select Category"
+msgstr "Selecciona Categoría"
+
+#. module: inventory_report_fixes_aviam
+#: model_terms:ir.ui.view,arch_db:inventory_report_fixes_aviam.template_report_inventory
+msgid "Time"
+msgstr "Tiempo"
+
+#. module: inventory_report_fixes_aviam
+#: model_terms:ir.ui.view,arch_db:inventory_report_fixes_aviam.template_report_inventory
+msgid "Total"
+msgstr ""
+
+#. module: inventory_report_fixes_aviam
+#: model_terms:ir.ui.view,arch_db:inventory_report_fixes_aviam.template_report_inventory
+msgid "Unit"
+msgstr "Unid"
+
+#. module: inventory_report_fixes_aviam
+#. openerp-web
+#: code:addons/inventory_report_fixes_aviam/static/src/js/action_button.js:0
+#: model:ir.actions.act_window,name:inventory_report_fixes_aviam.wizard_inventary_report_action
+#, python-format
+msgid "Wizard Inventary Report"
+msgstr "Wizard Reporte Inventario"
+
+#. module: inventory_report_fixes_aviam
+#: model:ir.model,name:inventory_report_fixes_aviam.model_inventary_report_wizard
+msgid "generate report of inventory"
+msgstr "Generar reporte de inventario"

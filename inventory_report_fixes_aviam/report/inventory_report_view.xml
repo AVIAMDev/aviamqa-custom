@@ -1,0 +1,219 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  @author Fausto Jesús De La Cruz Caminero <fdelacruz@aviamltd.com>
+-->
+<odoo>
+    <!-- Action Report Inventory -->
+    <record id="xml_action_report_inventory" model="ir.actions.report">
+        <field name="name">Inventory Report PDF</field>
+        <field name="model">stock.quant</field>
+        <field name="report_type">qweb-pdf</field>
+        <field name="report_name">inventory_report_fixes_aviam.template_report_inventory</field>
+        <field name="report_file">inventory_report_fixes_aviam.template_report_inventory</field>
+        <field name="binding_type">report</field>
+    </record>
+    <!-- Template Report Inventory  -->
+    <template id="template_report_inventory">
+        <t t-call="web.html_container">
+            <t t-call="web.basic_layout">
+                <t t-set="o" t-value="docs"/>
+                <div t-attf-class="header" t-att-style="report_header_style">
+                    <div class="row">
+                        <div class="col-3">
+                            <img t-if="res_company.logo" t-att-src="image_data_uri(res_company.logo)" style="max-height: 75px;" alt="Logo"/>
+                        </div>
+                        <div class="col-6 text-center">
+                            <h2 t-esc="res_company.name"/>
+                            <p class="text-muted">Existential Costs</p>
+                        </div>
+                        <div class="col-3" >
+                            <div class="row">
+                                <div class="col offset-2">                                            
+                                    Pag. <span class="page"/>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <span>Date <t t-esc="context_timestamp(datetime.datetime.now()).strftime('%d/%m/%Y')"/></span>
+                            </div>
+                            <div class="row">
+                                <span>Time  <t t-esc="context_timestamp(datetime.datetime.now()).strftime('%H:%M:%S')"/></span>
+                            </div>
+                        </div>
+                    </div>
+                    <hr/>
+                </div>
+                <div class="page"> 
+                    <t t-if="category_all">
+                        <t t-foreach="o.get_category_master()" t-as="c_m">
+                            <t t-set="values" t-value="{}"/>
+                            <t t-foreach="o.get_group_category(c_m.id)" t-as="c_gc">
+                                <div class="row justify-content-start">
+                                    <div class="col-2">
+                                        <t t-if="not c_gc.parent_id">
+                                            <span>Category Master:</span>
+                                        </t>
+                                        <t t-else="">
+                                            <span>Category:</span>
+                                        </t>
+                                    </div>
+                                    <div class="col">
+                                        <span t-esc="c_gc.name"/>
+                                    </div>
+                                </div>
+                                <t t-set="products" t-value="o.get_products(c_gc.id)"/>
+                                <t t-esc="values.update({c_gc.name:o.get_sum_value(c_gc.id)})"/>
+                                <t t-if="products and c_gc.parent_id != False">
+                                    <div class="row">
+                                        <table class="table">
+                                            <thead>
+                                                <tr>
+                                                    <th>Article</th>
+                                                    <th>Internal Reference</th>
+                                                    <th>Description</th>
+                                                    <th>Quantity</th>
+                                                    <th>Unit</th>
+                                                    <th>Cost</th>
+                                                    <th>Total</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                <t t-set="count" t-value="0"/>                                
+                                                <t t-set="total" t-value="0.00"/>                                
+                                                <tr t-foreach="products" t-as="p">
+                                                    <td t-esc="p.product_id.id"/>
+                                                    <t t-if="p.product_id.default_code">
+                                                        <td t-esc="p.product_id.default_code"/>
+                                                    </t>
+                                                    <t t-else="">
+                                                        <td>-</td>
+                                                    </t>
+                                                    <td t-esc="p.product_id.name"/>
+                                                    <td t-esc="p.quantity"/>
+                                                    <td t-esc="'LB'"/>
+                                                    <td t-esc="p.product_id.list_price" t-options="{'widget': 'float', 'decimal_precision': 'Total Product'}"/>
+                                                    <t t-set="sub_total" t-value="p.quantity * p.product_id.list_price"/>
+                                                    <td t-esc="sub_total" t-options="{'widget': 'float', 'decimal_precision': 'Total Product'}"/>
+                                                    <t t-set="total" t-value="total+sub_total"/>
+                                                    <t t-set="count" t-value="count+1"/>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-2">
+                                            <span>Category</span>
+                                        </div>
+                                        <div class="col-3">
+                                            <t t-esc="c_gc.name"/>
+                                        </div>
+                                        <div class="col-2">
+                                            <t t-esc="count"/>                                        
+                                        </div>
+                                        <div class="col-2 offset-4">
+                                            <t t-esc="total" t-options="{'widget': 'float', 'decimal_precision': 'Total Product'}"/>
+                                        </div>
+                                    </div>
+                                    <br/>
+                                </t>                            
+                            </t>
+                            <t t-foreach="o.reversed_dict(values)" t-as="v">
+                                <div class="row">
+                                    <div class="col-2">
+                                        <span>Total <t t-esc="v"/> </span>    
+                                    </div>
+                                    <div class="col-3">
+                                        <t t-esc="values[v]" t-options="{'widget': 'float', 'decimal_precision': 'Total Product'}"/>    
+                                    </div>
+                                </div>                
+                            </t>
+                        </t>
+                    </t>
+                    <t t-else="">
+                        <t t-set="values" t-value="{}"/>
+                        <t t-foreach="o.get_group_category(wizard_category_ids)" t-as="c_gc">
+                            <div class="row justify-content-start">
+                                <div class="col-2">
+                                    <t t-if="not c_gc.parent_id">
+                                        <span>Category Master:</span>
+                                    </t>
+                                    <t t-else="">
+                                        <span>Category:</span>
+                                    </t>
+                                </div>
+                                <div class="col">
+                                    <span t-esc="c_gc.name"/>
+                                </div>
+                            </div>
+                            <t t-set="products" t-value="o.get_products(c_gc.id)"/>
+                            <t t-esc="values.update({c_gc.name:o.get_sum_value(c_gc.id)})"/>
+                            <t t-if="products and c_gc.parent_id != False">
+                                <div class="row">
+                                    <table class="table">
+                                        <thead>
+                                            <tr>
+                                                <th>Article</th>
+                                                <th>Internal Reference</th>
+                                                <th>Description</th>
+                                                <th>Quantity</th>
+                                                <th>Unit</th>
+                                                <th>Cost</th>
+                                                <th>Total</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <t t-set="count" t-value="0"/>                                
+                                            <t t-set="total" t-value="0.00"/>                                
+                                            <tr t-foreach="products" t-as="p">
+                                                <td t-esc="p.product_id.id"/>
+                                                <t t-if="p.product_id.default_code">
+                                                    <td t-esc="p.product_id.default_code"/>
+                                                </t>
+                                                <t t-else="">
+                                                    <td>-</td>
+                                                </t>
+                                                <td t-esc="p.product_id.name"/>
+                                                <td t-esc="p.quantity"/>
+                                                <td t-esc="'LB'"/>
+                                                <td t-esc="p.product_id.list_price" t-options="{'widget': 'float', 'decimal_precision': 'Total Product'}"/>
+                                                <t t-set="sub_total" t-value="p.quantity * p.product_id.list_price"/>
+                                                <td t-esc="sub_total" t-options="{'widget': 'float', 'decimal_precision': 'Total Product'}"/>
+                                                <t t-set="total" t-value="total+sub_total"/>
+                                                <t t-set="count" t-value="count+1"/>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                                <div class="row">
+                                    <div class="col-2">
+                                        <span>Category</span>
+                                    </div>
+                                    <div class="col-3">
+                                        <t t-esc="c_gc.name"/>
+                                    </div>
+                                    <div class="col-2">
+                                        <t t-esc="count"/>                                        
+                                    </div>
+                                    <div class="col-2 offset-4">
+                                        <t t-esc="total" t-options="{'widget': 'float', 'decimal_precision': 'Total Product'}"/>
+                                    </div>
+                                </div>
+                                <br/>
+                            </t>                            
+                        </t>
+                        
+                        <t t-foreach="o.reversed_dict(values)" t-as="v">
+                            <div class="row">
+                                <div class="col-2">
+                                    <span>Total <t t-esc="v"/> </span>    
+                                </div>
+                                <div class="col-3">
+                                    <t t-esc="values[v]" t-options="{'widget': 'float', 'decimal_precision': 'Total Product'}"/>    
+                                </div>
+                            </div>                
+                        </t>
+                    </t>
+                </div>
+            </t>
+        </t>
+    </template>
+</odoo>
